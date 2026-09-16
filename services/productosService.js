@@ -6,10 +6,23 @@ const productos = [
 
 console.log("SERVICIO");
 
-const obtenerTodos = () => {
+const supabase = require('../config/supabase');
+
+
+
+
+const obtenerTodos = async () => {
 
    
-    return  productos
+  //return productos
+
+   const { data, error } = await supabase
+    .from('producto')
+    .select('*');
+
+  if (error) throw error;
+  
+  return data;
 
 }
 

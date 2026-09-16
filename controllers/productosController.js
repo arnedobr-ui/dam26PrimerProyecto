@@ -5,12 +5,20 @@ const service = require('../services/productosService');
 console.log("CONTROLADOR");
 
 
-const obtenerTodos = (req, res) => {
+const obtenerTodos = async (req, res) => {
 
     // Validacion
+    // const productos = await service.obtenerTodos();
+    // res.json(productos);
 
-    const productos = service.obtenerTodos();
-    res.json(productos);
+
+    try {
+        const data = await service.obtenerTodos();
+        res.json(data);
+    } catch (e) {
+        res.status(500).json({ error: 'Error al obtener' });
+    }
+
     
 }
 
