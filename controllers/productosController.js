@@ -23,9 +23,18 @@ const obtenerTodos = async (req, res) => {
 }
 
 
+const obtenerPorId = async (req, res) => {
+
+    try {
+        const data = await service.obtenerPorId(req);
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({error: 'Error al obtener por ID'})
+    }
+
+}
+
 
 const obtenerUltimo = (req, res) =>{}
 
-
-
-module.exports = { obtenerTodos, obtenerUltimo };
+module.exports = { obtenerTodos, obtenerUltimo, obtenerPorId };

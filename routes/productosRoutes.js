@@ -11,8 +11,7 @@ console.log("ENRUTADOR");
 
 router.get('/', ctrl.obtenerTodos);
 router.get('/ultimo', ctrl.obtenerUltimo);
-
-
+router.get('/:id', ctrl.obtenerPorId);
 
 module.exports = router;
 
