@@ -25,10 +25,14 @@ const obtenerTodos = async (req, res) => {
 
 const obtenerPorId = async (req, res) => {
 
+    console.log(req.params.id);
+
+    const id = req.params.id
     try {
-        const data = await service.obtenerPorId(req);
+        const data = await service.obtenerPorId(id);
         res.json(data);
     } catch (error) {
+      
         res.status(500).json({error: 'Error al obtener por ID'})
     }
 

@@ -28,12 +28,19 @@ const obtenerTodos = async () => {
 
 
 
-const obtenerPorId = async () => {
+const obtenerPorId = async (id) => {
+
+    console.log(id);
 
     const {data, error} = await supabase
     .from('producto')
     .select('*')
-    .eq(1)
+    .eq('prod_codigo', id);
+
+    if (error){
+       throw error;
+    }
+  return data;
 }
 
 
