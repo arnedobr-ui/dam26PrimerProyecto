@@ -39,6 +39,45 @@ const obtenerPorId = async (req, res) => {
 }
 
 
+const crear = async (req, res) => {
+
+  
+    try {
+        const data = await service.crear(req.body)
+        return res.status(200).json(data);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: "Error al crear"});
+    }
+
+}
+
+
+const eliminar = async (req, res) => {
+ 
+
+    try {
+        const data = await service.eliminar(req.body);
+        return res.status(200).json(data);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: "Error al eliminar"})
+    }
+
+
+}
+
+
+const actualizar = async (req, res) => {
+    try {
+        const data = await service.actualizar(req.body);
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(500).json({error:"error al actualizar"})
+        
+    }
+}
+
 const obtenerUltimo = (req, res) =>{}
 
-module.exports = { obtenerTodos, obtenerUltimo, obtenerPorId };
+module.exports = { obtenerTodos, obtenerUltimo, obtenerPorId, crear, eliminar, actualizar };
